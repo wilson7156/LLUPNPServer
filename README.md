@@ -5,5 +5,5 @@
 搜索可以播放的设备使用 LLUPNPDiscover
 
 LLUPNPDiscover *discover = [[LLUPNPDiscover alloc] initWithType:LLUPNPDiscoverTypeDefault name:nil];
-    discover.delegate = self;
-    [discover discover];
+discover.delegate = self;
+[discover discover];
