@@ -1,0 +1,53 @@
+PODS:
+  - CocoaAsyncSocket (7.4.3):
+    - CocoaAsyncSocket/All (= 7.4.3)
+  - CocoaAsyncSocket/All (7.4.3):
+    - CocoaAsyncSocket/GCD
+    - CocoaAsyncSocket/RunLoop
+  - CocoaAsyncSocket/GCD (7.4.3)
+  - CocoaAsyncSocket/RunLoop (7.4.3)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - KissXML (5.3.1):
+    - KissXML/All (= 5.3.1)
+  - KissXML/Additions (5.3.1):
+    - KissXML/Core
+  - KissXML/All (5.3.1):
+    - KissXML/Additions
+    - KissXML/Core
+  - KissXML/Core (5.3.1)
+  - LLUPNPServer (0.1.0):
+    - CocoaAsyncSocket (~> 7.4.3)
+    - KissXML
+    - XMLDictionary
+  - XMLDictionary (1.4.1)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - LLUPNPServer (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - CocoaAsyncSocket
+    - KissXML
+    - XMLDictionary
+  trunk:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  LLUPNPServer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  KissXML: 5c8e0f2e8b9f071d3e1ae123dec3eb5da615c10c
+  LLUPNPServer: ab04473c7193eff14d4164909b0f4a65f32f6009
+  XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
+
+PODFILE CHECKSUM: d232db27ce29591a419411f7bb86a3c89aace2d8
+
+COCOAPODS: 1.8.4

@@ -7,8 +7,12 @@
 //
 
 #import "LLViewController.h"
+#define DISPATCH_DECLS(name) typedef struct name##_s *name##_t
+DISPATCH_DECLS(LL_Queue);
 
 @interface LLViewController ()
+
+@property (nonatomic,strong) NSMutableArray *devices;
 
 @end
 
@@ -17,7 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+
 }
 
 - (void)didReceiveMemoryWarning

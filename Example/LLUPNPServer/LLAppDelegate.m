@@ -7,11 +7,29 @@
 //
 
 #import "LLAppDelegate.h"
+#import "UPNPListViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation LLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    UPNPListViewController *viewController = [UPNPListViewController new];
+    UINavigationController *navigationControl = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationControl.view.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = navigationControl;
+    
+//    AVAudioSession *session = [AVAudioSession sharedInstance];
+//    [session setCategory:AVAudioSessionCategoryAmbient error:nil];
+//    [session setActive:YES error:nil];
+//    NSError *error;
+//    [[AVAudioSession sharedInstance] setActive:YES error:&error];
+    //iOS9以上加上这句
+//    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     return YES;
 }

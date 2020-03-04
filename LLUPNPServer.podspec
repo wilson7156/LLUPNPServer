@@ -38,5 +38,8 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'CocoaAsyncSocket', '~> 7.4.3'
+   s.dependency 'XMLDictionary'
+#   s.dependency 'GDataXML-HTML', '~> 1.1.0'
+   s.dependency 'KissXML'
 end
