@@ -294,7 +294,7 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
 
 - (void)playNext {
     
-    NSInteger index = self->_playIndex;
+    NSInteger index = ++self->_playIndex;
     if (index >= self.urls.count) {
         return;
     }

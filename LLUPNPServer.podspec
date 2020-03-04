@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'LLUPNPServer'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of LLUPNPServer.'
+  s.summary          = 'UPNP投屏'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  简单实现iOS使用UPNP协议投屏功能
                        DESC
 
   s.homepage         = 'https://github.com/704110362@qq.com/LLUPNPServer'
