@@ -249,6 +249,7 @@
                 }
             });
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:LLUPNPDeviceDidDismissNotifiation object:notify.uuid];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:LLUPNP_NOTIICATION_NOTIFY_NAME object:notify];
 }
