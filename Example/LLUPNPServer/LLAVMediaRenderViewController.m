@@ -46,6 +46,10 @@
     [self.control stop];
 }
 
+- (IBAction)nextButtonClick:(id)sender {
+    [self.control playNext];
+}
+
 - (void)sliderValueChange {
     [self.control seekToRate:self.sliderView.value];
 }

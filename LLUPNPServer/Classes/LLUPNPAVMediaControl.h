@@ -116,6 +116,9 @@ typedef NS_ENUM(NSInteger,LLUPNPMediaControlState) {
 /// 跳转到某一进度
 /// @param rate 进度 0-1
 - (void)seekToRate:(CGFloat)rate;
+
+/// 播放下一视频
+- (void)playNext;
 @end
 
 NS_ASSUME_NONNULL_END

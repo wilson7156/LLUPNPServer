@@ -126,6 +126,7 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
 
 - (void)replaceURL:(NSURL *)url {
     self->_url = url;
+    self->_isStopOperation = YES;
     [self _stopSuccessful:nil];
     [self play];
 }
@@ -170,6 +171,7 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
 }
 
 - (void)stop {
+    self->_isStopOperation = YES;
     [self _stopSuccessful:nil];
     [self _callStatus:LLUPNPMediaControlStateEnd withError:nil];
     [self.statusObserver pause];
@@ -212,6 +214,15 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
             [self _setPlayAction];
         }
     }];
+}
+
+- (void)playNext {
+    if (![self _canPlayNext]) {
+        return;
+    }
+    self->_isStopOperation = YES;
+    [self _stopSuccessful:nil];
+    [self _playNext];
 }
 
 //设置播放
@@ -293,7 +304,7 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
     return YES;
 }
 
-- (void)playNext {
+- (void)_playNext {
     
     NSInteger index = self->_playIndex;
     if (index >= self.urls.count) {
@@ -301,7 +312,6 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
     }
     
     NSURL *url = self.urls[index];
-    self->_playIndex = index;
     self->_url = url;
     [self play];
 }
@@ -334,17 +344,22 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
         if (self.duration > 0) {
             
             self->_duration = 0;
-            //是否自动播放
-            if (![self _canPlayNext] && self->_isStopOperation) {
-                if (self.status != LLUPNPMediaControlStateEnd) {
-                    [observer pause];
-                }
-                self->_delayPlayInterval = 2;
+            if (self->_isStopOperation) {
                 [self _callStatus:LLUPNPMediaControlStateEnd withError:nil];
             }else {
-                self->_delayPlayInterval = 0;
-                self->_status = LLUPNPMediaControlStateEnd;
-                [self playNext];
+                
+                //是否自动播放
+                if (![self _canPlayNext]) {
+                    if (self.status != LLUPNPMediaControlStateEnd) {
+                        [observer pause];
+                    }
+                    self->_delayPlayInterval = 2;
+                    [self _callStatus:LLUPNPMediaControlStateEnd withError:nil];
+                }else {
+                    self->_delayPlayInterval = 0;
+                    self->_status = LLUPNPMediaControlStateEnd;
+                    [self _playNext];
+                }
             }
         }
     }else if (state == LLUPNPMediaStatusTransitioning) {
