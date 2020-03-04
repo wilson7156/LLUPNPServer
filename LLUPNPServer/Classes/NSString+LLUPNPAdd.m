@@ -121,9 +121,9 @@
 + (NSString *)_getTimeString:(NSInteger)time {
     
     if (time < 10) {
-        return [NSString stringWithFormat:@"0%ld",time];
+        return [NSString stringWithFormat:@"0%@",@(time).stringValue];
     }
-    return [NSString stringWithFormat:@"%ld",time];
+    return @(time).stringValue;
 }
 
 @end

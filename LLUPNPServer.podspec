@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
   简单实现iOS使用UPNP协议投屏功能
                        DESC
 
-  s.homepage         = 'https://github.com/704110362@qq.com/LLUPNPServer'
+  s.homepage         = 'https://github.com/wilson7156/LLUPNPServer'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '704110362@qq.com' => '704110362@qq.com' }
-  s.source           = { :git => 'https://github.com/704110362@qq.com/LLUPNPServer.git', :tag => s.version.to_s }
+  s.author           = { '704110362@qq.com' => 'wilson' }
+  s.source           = { :git => 'https://github.com/wilson7156/LLUPNPServer.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
