@@ -126,7 +126,7 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
 
 - (void)replaceURL:(NSURL *)url {
     self->_url = url;
-    [self stop];
+    [self _stopSuccessful:nil];
     [self play];
 }
 
@@ -170,8 +170,9 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
 }
 
 - (void)stop {
-    self->_isStopOperation = YES;
     [self _stopSuccessful:nil];
+    [self _callStatus:LLUPNPMediaControlStateEnd withError:nil];
+    [self.statusObserver pause];
 }
 
 - (void)seekToRealTime:(LLMediaRealTime)realTime {
@@ -203,6 +204,7 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
 //设置url和播放
 - (void)_play {
     
+    self->_isStopOperation = NO;
     __weak typeof(self) _self = self;
     [self _setTransportURLWithSuccess:^(BOOL success) {
         __strong typeof(_self) self = _self;
@@ -282,7 +284,8 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
         return NO;
     }
     
-    NSInteger index = ++self->_playIndex;
+    NSInteger index = self->_playIndex;
+    index++;
     if (index >= self.urls.count) {
         return NO;
     }
@@ -331,8 +334,7 @@ NSString *AVSystemVolumeParameterKey = @"AVSystemController_AudioVolumeNotificat
             
             self->_duration = 0;
             //是否自动播放
-            if (![self _canPlayNext]) {
-                
+            if (![self _canPlayNext] && self->_isStopOperation) {
                 if (self.status != LLUPNPMediaControlStateEnd) {
                     [observer pause];
                 }

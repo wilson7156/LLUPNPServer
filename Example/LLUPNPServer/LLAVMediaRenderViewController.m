@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.sliderView addTarget:self action:@selector(sliderValueChange) forControlEvents:UIControlEventValueChanged];
+    
     NSArray *urls = @[[NSURL URLWithString:@"http://192.168.31.80/zhi.mp3"],
     [NSURL URLWithString:@"http://192.168.31.80/you.mp3"],
     [NSURL URLWithString:@"http://192.168.31.80/01.mkv"]];

@@ -51,10 +51,10 @@
 }
 
 - (void)pause {
+    self->_isPlay = NO;
     if (!self->_timer) {
         return;
     }
-    self->_isPlay = NO;
     dispatch_suspend(self->_timer);
 }
 
