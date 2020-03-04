@@ -27,3 +27,5 @@ pod 'LLUPNPServer'
 ## License
 
 LLUPNPServer is available under the MIT license. See the LICENSE file for more info.
+
+使用 UPNP协议实现对音视频投屏
