@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LLUPNPServer'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'UPNP投屏'
 
 # This description is used to generate tags and improve search results.
